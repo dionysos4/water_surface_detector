@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 import rospy
 import cv2
-import py_cpp_utils
+try:
+  import py_cpp_utils
+except:
+  print("bayer_rggb12 encoding not possible!")
 from sensor_msgs.msg import Image, CameraInfo, PointCloud2
 from geometry_msgs.msg import PoseStamped, Quaternion
 from message_filters import ApproximateTimeSynchronizer, Subscriber
