@@ -1,0 +1,62 @@
+stereo:
+  masking:
+    dataset_mean:               # Mean values (RGB) of the images used to train the segmentation network
+      - 0.4454203248023987
+      - 0.4749860167503357
+      - 0.4680652916431427
+    dataset_std:                # Standard deviation (RGB) of the images used to train the segmentation network
+      - 0.2575828433036804
+      - 0.2523757517337799
+      - 0.2858140468597412
+    scale: 6                    # Scale of image resizing for masking. Allowed are: 1,1.5,2,3,4,6. Higher value means faster but worse masking
+    threshold: 0.9              # Masking Threshold, High value results in less false positives but also less true positives
+    model_path: "script/pretrained/VGG16_Enc_Dec_Misc_Constance2" #Relative path from package to segmentation model	          
+
+  estimation:
+    scale: 3                    # Scale of image resizing for point cloud generation. Allowed are: 1,1.5,2,2.4,3,4,6. Should be <= masking scale
+    surface_max_z: 40           # Maximum z coordinate (matches roughly distance to camera) of water points to be considered in regression of water surface
+    ransac_max_trials: 100      # Maximum RANSAC runs. 
+    ransac_res_threshold: 0.2
+    ransac_stop_prob: 1         # Needed propability for a all inlier set to stop RANSAC. Value of 1 doesn't mean all "ransac_max_trials" are run.
+
+  sgbm:
+    block_size: 5              # Needs to be adapted with estimation scale.	
+
+grid:
+  width: 2500                    # Occupancy grid width in pixels
+  height: 2500                   # Occupancy grid height in pixels
+  resolution: 5                 # Resolution in Pixel/Meter
+  max_height: 2.3               # Maximal height of objects above surface level in meters to be recognised as obstacle
+  min_height: 0.10              # Minimal height of objects above surface level in meters to be recognised as obstacle
+
+  # The distances define a zone around the coordinate origin (of the lidar) where objects are not recognised as obstacles (e.g. parts of the boat)
+  dist_left:  4
+  dist_right: 4
+  dist_front: 4
+  dist_back: 7
+
+
+map:
+  width: 2000                   # Map grid width in pixels
+  height: 2000                  # Map grid height in pixels
+  resolution: 5                 # Resolution in Pixel/Meter. Has to be identical to grid/resolution for now
+  max_yaw_offset: 0.3           # Maxmial yaw error (in degrees) of world -> base_link transform to be considered
+  yaw_check_res: 0.1            # Resolution of yaw-check. (max_yaw_offset * 2) / yaw_check_res defines how many map rotation are tested for each run.  
+  update_threshold: 8          # Euclidean distance to the last position to trigger a map update
+  obstacle_vanish: 45           # Defines how fast obstacles are forgotten if they are not present in current measurement.
+  invert_translation: True      # Invert the translation in the 'world' to 'base_link' transform. Might be needed for some bag files 
+
+imu:
+  height: 2.01592709            # Mean height above surface level (y-axis section) of the "base_camera_left" frame. Heuristic value. Can be obtained by running the calibration node
+  roll_offset: -0.006498312043  # 16.06.2021    # Rotation between camera and imu on x-axis. Can be obtained by running the calibration node
+  pitch_offset: -0.002775209590 # 16.06.2021   # Rotation between camera and imu on y-axis. Can be obtained by running the claibration node
+#  roll_offset: -0.001889388542 # 08.04.2021    # Rotation between camera and imu on x-axis. Can be obtained by running the calibration node
+#  pitch_offset: -0.013426324041 # 08.04.2021   # Rotation between camera and imu on y-axis. Can be obtained by running the claibration node
+
+calibration:
+  min_height: 1.9              # Minimal estimated height above surface (by stereo system) to assume the measurement as valid  
+  max_height: 2.1              # Maximal estimated height above surface (by stereo system) to assume the measurement as valid
+  samples: 200                 # Number of aquired samples before evaluation is started
+
+lidar:
+  topic: "velodyne_points"

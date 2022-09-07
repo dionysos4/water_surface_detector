@@ -1,0 +1,10 @@
+<launch>
+  <param name="/use_sim_time" value="true"/>		
+  <rosparam file="$(find surface_detector)/config/params.yaml" />		
+  <node name="obstacle_detector" type="obstacle_detector.py" pkg="surface_detector" output="screen" args="-stereo"/>
+  <node name="stereo_detector" type="stereo_detector.py" pkg="surface_detector" output="screen" args="-sgbm">
+	<param name="pkg_path" value="$(find surface_detector)"/>
+  </node>
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find surface_detector)/config/config_file.rviz"/>
+</launch>
+
