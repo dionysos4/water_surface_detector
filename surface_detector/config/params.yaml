@@ -23,8 +23,8 @@ stereo:
     block_size: 5              # Needs to be adapted with estimation scale.	
 
 grid:
-  width: 400                    # Occupancy grid width in pixels
-  height: 400                   # Occupancy grid height in pixels
+  width: 2500                    # Occupancy grid width in pixels
+  height: 2500                   # Occupancy grid height in pixels
   resolution: 5                 # Resolution in Pixel/Meter
   max_height: 2.3               # Maximal height of objects above surface level in meters to be recognised as obstacle
   min_height: 0.10              # Minimal height of objects above surface level in meters to be recognised as obstacle
