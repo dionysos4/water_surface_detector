@@ -2,7 +2,7 @@
 
 This package is a ROS node to estimate pitch, roll and sensor height for maritime applications with a stereo camera system. It estimates also the ground plane (water surface) and in combination with a calibrated lidar it can be used to generate an occupancy grid for object detection and collision avoidance.
 
-![](detection.png "Ground plane and virtual horizon detection")
+![](imgs/detection.png "Ground plane and virtual horizon detection")
 
 ## Nodes
 
@@ -91,4 +91,4 @@ rosbag play --clock example.bag -r 0.1
 
 ## Notes
 So that the nodes work well, we assume that a tf tree similar to that in the image below is available. camera_left and camera_right are the rectified cameras. camera_left_imu is a coordinate system that is at the same position as the left_camera but oriented as a classical imu coordinate system. The transform to water surface is estimated by the estimator_stereo node.
-![](tf.png "Example tf")
+![](imgs/tf.png "Example tf")
