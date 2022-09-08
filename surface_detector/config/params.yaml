@@ -23,8 +23,8 @@ stereo:
     block_size: 5              # Needs to be adapted with estimation scale.	
 
 grid:
-  width: 2500                    # Occupancy grid width in pixels
-  height: 2500                   # Occupancy grid height in pixels
+  width: 400                    # Occupancy grid width in pixels
+  height: 400                   # Occupancy grid height in pixels
   resolution: 5                 # Resolution in Pixel/Meter
   max_height: 2.3               # Maximal height of objects above surface level in meters to be recognised as obstacle
   min_height: 0.10              # Minimal height of objects above surface level in meters to be recognised as obstacle
@@ -34,29 +34,6 @@ grid:
   dist_right: 4
   dist_front: 4
   dist_back: 7
-
-
-map:
-  width: 2000                   # Map grid width in pixels
-  height: 2000                  # Map grid height in pixels
-  resolution: 5                 # Resolution in Pixel/Meter. Has to be identical to grid/resolution for now
-  max_yaw_offset: 0.3           # Maxmial yaw error (in degrees) of world -> base_link transform to be considered
-  yaw_check_res: 0.1            # Resolution of yaw-check. (max_yaw_offset * 2) / yaw_check_res defines how many map rotation are tested for each run.  
-  update_threshold: 8          # Euclidean distance to the last position to trigger a map update
-  obstacle_vanish: 45           # Defines how fast obstacles are forgotten if they are not present in current measurement.
-  invert_translation: True      # Invert the translation in the 'world' to 'base_link' transform. Might be needed for some bag files 
-
-imu:
-  height: 2.01592709            # Mean height above surface level (y-axis section) of the "base_camera_left" frame. Heuristic value. Can be obtained by running the calibration node
-  roll_offset: -0.006498312043  # 16.06.2021    # Rotation between camera and imu on x-axis. Can be obtained by running the calibration node
-  pitch_offset: -0.002775209590 # 16.06.2021   # Rotation between camera and imu on y-axis. Can be obtained by running the claibration node
-#  roll_offset: -0.001889388542 # 08.04.2021    # Rotation between camera and imu on x-axis. Can be obtained by running the calibration node
-#  pitch_offset: -0.013426324041 # 08.04.2021   # Rotation between camera and imu on y-axis. Can be obtained by running the claibration node
-
-calibration:
-  min_height: 1.9              # Minimal estimated height above surface (by stereo system) to assume the measurement as valid  
-  max_height: 2.1              # Maximal estimated height above surface (by stereo system) to assume the measurement as valid
-  samples: 200                 # Number of aquired samples before evaluation is started
 
 lidar:
   topic: "velodyne_points"
