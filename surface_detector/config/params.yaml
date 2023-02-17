@@ -8,16 +8,16 @@ stereo:
       - 0.2575828433036804
       - 0.2523757517337799
       - 0.2858140468597412
-    scale: 6                    # Scale of image resizing for masking. Allowed are: 1,1.5,2,3,4,6. Higher value means faster but worse masking
+    scale: 3                    # Scale of image resizing for masking. Allowed are: 1,1.5,2,3,4,6. Higher value means faster but worse masking
     threshold: 0.9              # Masking Threshold, High value results in less false positives but also less true positives
-    model_path: "script/pretrained/VGG16_Enc_Dec_Misc_Constance2" #Relative path from package to segmentation model	          
+    model_path: "script/pretrained/ResNet34_Enc_Dec_Misc_Constance" #Relative path from package to segmentation model	          
 
   estimation:
     scale: 3                    # Scale of image resizing for point cloud generation. Allowed are: 1,1.5,2,2.4,3,4,6. Should be <= masking scale
     surface_max_z: 40           # Maximum z coordinate (matches roughly distance to camera) of water points to be considered in regression of water surface
     ransac_max_trials: 100      # Maximum RANSAC runs. 
     ransac_res_threshold: 0.2
-    ransac_stop_prob: 1         # Needed propability for a all inlier set to stop RANSAC. Value of 1 doesn't mean all "ransac_max_trials" are run.
+    ransac_stop_prob: 0.99         # Needed propability for a all inlier set to stop RANSAC. Value of 1 doesn't mean all "ransac_max_trials" are run.
 
   sgbm:
     block_size: 5              # Needs to be adapted with estimation scale.	

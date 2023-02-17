@@ -17,7 +17,7 @@ import pc_utils
 import os, sys
 from sklearn.linear_model import RANSACRegressor, LinearRegression
 import math
-from masknet.vgg_encoder_decoder import VGGNet, FCN8s
+from masknet.resnet34_encoder_decoder import ResNet, FCN8s
 from torchvision import transforms
 from torch.autograd import Variable
 import torch
@@ -25,6 +25,7 @@ import torch.nn.functional as F
 import tf2_ros
 from geometry_msgs.msg import PoseStamped, Quaternion, TransformStamped
 import time
+import torchvision.models as models
 
 
 def binarize(output, activation=None, threshold=0.5):
@@ -367,9 +368,10 @@ class estimator_stereo:
     Initialized neural network for image segmentation and load pretrained weights
     """
     rospy.loginfo("%s: Loading Segmentation Model", self.name)
-    # Load VGG16 Encoder Decoder Model
-    vgg_model = VGGNet(requires_grad=True, remove_fc=True, pretrained=False)
-    model = FCN8s(pretrained_net=vgg_model, n_class=1).to(self.device)
+    # Load ResNet Encoder Decoder Model
+    resnet34 = models.resnet34(pretrained=True)
+    res_model = ResNet(resnet34)
+    model = FCN8s(res_model, 1).to(self.device)
 
     # Load trained state in model
     pkg_path = rospy.get_param("~pkg_path")
