@@ -102,7 +102,7 @@ def calc_plane(point_cloud, var_index=[0,1,2]):
     y = point_cloud[:,var_index[2]]
     X = -point_cloud[:,var_index[0:2]]
     lin_reg = LinearRegression()
-    reg = RANSACRegressor(base_estimator=lin_reg, stop_probability=0.99, residual_threshold=0.2,max_trials=1000).fit(X, y)
+    reg = RANSACRegressor(estimator=lin_reg, stop_probability=0.99, residual_threshold=0.2,max_trials=1000).fit(X, y)
     normal_vec, support_vec = ([0,0,0], [0,0,0])
     normal_vec[var_index[2]] = 1
     normal_vec[var_index[0]] = reg.estimator_.coef_[0]

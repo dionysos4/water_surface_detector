@@ -2,15 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import copy
-from sympy import degree
 import torch
-from models.vgg_encoder_decoder import VGGNet, FCN8s
 from torchvision import transforms
 import utils.utils as utils
 import math
 import matplotlib.pyplot as plt
 import math
-import open3d as o3d
 from scipy.spatial.transform import Rotation
 from tqdm import tqdm
 
