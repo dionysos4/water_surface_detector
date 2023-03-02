@@ -101,7 +101,7 @@ Following packages are required (tested versions):
 * pytorch (1.11.0)
 * torchvision (0.12.0)
 * scikit-learn (1.2.0)
-* scipy (1.10.0)
+* scipy (1.10.0)\
 If you want to train a model you also need the following package:
 * [ummon3](https://github.com/matherm/ummon3)
 
