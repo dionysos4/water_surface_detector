@@ -94,8 +94,19 @@ So that the nodes work well, we assume that a tf tree similar to that in the ima
 ![](imgs/tf.png "Example tf")
 
 
-## Evaluation of the pitch and roll estimation
-In the directory "experiments" you can find more information to the evaluation.
+## Requirements
+Following packages are required (tested versions):
+* opencv-python (4.1.2.30)
+* numpy (1.22.3)
+* pytorch (1.11.0)
+* torchvision (0.12.0)
+* scikit-learn (1.2.0)
+* scipy (1.10.0)
+If you want to train a model you also need the following package:
+* [ummon3](https://github.com/matherm/ummon3)
 
-## Training a model
-In the directory "model_training" you can train and evaluate your own model. More information in the README.md.
+## Evaluation of the pitch and roll estimation
+In the directory "experiments" you can find the evaluation of the pitch and roll estimation on the publicly available [dataset](https://git.ios.htwg-konstanz.de/dgriesse/constance_orientation_dataset/-/archive/main/constance_orientation_dataset-main.zip) mentioned in the paper.
+
+## Train or evaluate a model
+In the directory "model_training" you can train and evaluate your own model. More information in the model_training/README.md.
