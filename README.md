@@ -92,3 +92,10 @@ rosbag play --clock example.bag -r 0.1
 ## Notes
 So that the nodes work well, we assume that a tf tree similar to that in the image below is available. camera_left and camera_right are the rectified cameras. camera_left_imu is a coordinate system that is at the same position as the left_camera but oriented as a classical imu coordinate system. The transform to water surface is estimated by the estimator_stereo node.
 ![](imgs/tf.png "Example tf")
+
+
+## Evaluation of the pitch and roll estimation
+In the directory "experiments" you can find more information to the evaluation.
+
+## Training a model
+In the directory "model_training" you can train and evaluate your own model. More information in the README.md.
