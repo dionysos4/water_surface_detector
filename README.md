@@ -1,4 +1,4 @@
-# water_surface_detector
+# Visual Pitch and Roll Estimation For Inland Water Vessels
 
 This package is a ROS node to estimate pitch, roll and sensor height for maritime applications with a stereo camera system. It estimates also the ground plane (water surface) and in combination with a calibrated lidar it can be used to generate an occupancy grid for object detection and collision avoidance.
 
@@ -110,3 +110,20 @@ In the directory "experiments" you can find the evaluation of the pitch and roll
 
 ## Train or evaluate a model
 In the directory "model_training" you can train and evaluate your own model. More information in the model_training/README.md.
+
+
+
+## Citation
+
+```bibtex
+@INPROCEEDINGS{10160460,
+  author={Griesser, Dennis and Umlauf, Georg and Franz, Matthias O.},
+  booktitle={2023 IEEE International Conference on Robotics and Automation (ICRA)}, 
+  title={Visual Pitch and Roll Estimation For Inland Water Vessels}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1961-1967},
+  doi={10.1109/ICRA48891.2023.10160460}
+}
+```
